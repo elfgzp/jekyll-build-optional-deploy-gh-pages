@@ -9,8 +9,7 @@ git checkout --orphan gh-pages
 cp ads.txt build/
 cd build/
 touch .nojekyll
-remote_repo="https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" && \
-remote_branch="${REMOTE_BRANCH}" && \
+remote_repo="https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" && \
 
 git init && \
 git config user.name "${GITHUB_ACTOR}" && \
@@ -20,7 +19,7 @@ git add . && \
 echo -n '[!] - Files to Commit:' && ls -l | wc -l && \
 
 git commit -m'action build'
-git push --force origin gh-pages
+git push --force $remote_repo master:gh-pages
 
 rm -fr .git && \
 
