@@ -78,6 +78,7 @@ if [ -n "$DELETE_BEFORE_BUILD" ]; then
 fi
 
 echo '[!] - Building '
+tree -l
 bundle exec jekyll build
 
 
@@ -92,6 +93,7 @@ if [ "$DEPLOY_SITE" = true ]; then
 	fi
 	
 	cd "${BUILD_DIR}"
+	tree -l
 	remote_repo="https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" && \
 	remote_branch="${REMOTE_BRANCH}" && \
 	
