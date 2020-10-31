@@ -3,8 +3,6 @@
 gem install bundler:1.16.5
 bundle install
 bundle exec jekyll build
-git config --global user.email "me@elfgzp.cn"
-git config --global user.name "elfgzp"
 git checkout --orphan gh-pages
 cp ads.txt build/
 cd build/
