@@ -6,7 +6,6 @@ bundle exec jekyll build
 git config --global user.email "travis@travis-ci.org"
 git config --global user.name "Travis CI"
 git checkout --orphan gh-pages
-shopt -s extglob
 cp ads.txt build/
 cd build/
 touch .nojekyll
