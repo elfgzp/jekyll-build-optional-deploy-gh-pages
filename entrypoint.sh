@@ -1,5 +1,8 @@
 #!/bin/sh
 
+gem install bundler:1.16.5
+bundle install
+bundle exec jekyll build
 git config --global user.email "travis@travis-ci.org"
 git config --global user.name "Travis CI"
 git checkout --orphan gh-pages
