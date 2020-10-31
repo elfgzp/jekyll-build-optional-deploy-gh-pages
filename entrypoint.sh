@@ -19,8 +19,8 @@ git add . && \
 
 echo -n '[!] - Files to Commit:' && ls -l | wc -l && \
 
-git commit -m'action build' > /dev/null 2>&1 && \
-git push --force origin master:gh-pages > /dev/null 2>&1 && \
+git commit -m'action build'
+git push --force origin gh-pages
 
 rm -fr .git && \
 
