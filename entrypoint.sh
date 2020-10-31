@@ -8,11 +8,22 @@ git config --global user.name "Travis CI"
 git checkout --orphan gh-pages
 shopt -s extglob
 cp ads.txt build/
-rm -rf !(build) && mv build/* . && rm -rf build
+cd build/
 touch .nojekyll
-git config credential.helper "store --file=.git/credentials"
-echo "https://${GH_TOKEN}:@github.com" > .git/credentials
-git add .
-git commit --message "Travis build: $TRAVIS_BUILD_NUMBER"
-git push origin gh-pages -f
-git push -f --mirror https://elf_gzp:${GITEE_TOKEN}@gitee.com/elf_gzp/elfgzp.cn.git
+remote_repo="https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" && \
+remote_branch="${REMOTE_BRANCH}" && \
+
+git init && \
+git config user.name "${GITHUB_ACTOR}" && \
+git config user.email "${GITHUB_ACTOR}@users.noreply.github.com" && \
+git add . && \
+
+echo -n '[!] - Files to Commit:' && ls -l | wc -l && \
+
+git commit -m'action build' > /dev/null 2>&1 && \
+git push --force origin master:gh-pages > /dev/null 2>&1 && \
+
+rm -fr .git && \
+
+cd ../
+
