@@ -7,7 +7,7 @@ git checkout --orphan gh-pages
 cp ads.txt build/
 cd build/
 touch .nojekyll
-remote_repo="https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" && \
+remote_repo="https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" && \
 
 git init && \
 git config user.name "${GITHUB_ACTOR}" && \
